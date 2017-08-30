@@ -418,7 +418,7 @@ prevent syntax highlighting code blocks, respectively:
           return;
         }
 
-        var step = this.steps[this.selected];
+        var step = this.steps[this.selected] || this.steps[0];;
         step.active = true;
 
         location.hash = this.selected.toString();
