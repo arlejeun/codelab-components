@@ -403,7 +403,7 @@ prevent syntax highlighting code blocks, respectively:
        */
       select: function(stepIndex) {
         if (stepIndex < 0 || stepIndex > this.steps.length - 1) {
-          return;
+          stepIndex = 0;
         }
 
         this._allowCodelabComplete();
@@ -418,7 +418,11 @@ prevent syntax highlighting code blocks, respectively:
           return;
         }
 
-        var step = this.steps[this.selected] || this.steps[0];;
+        if (this.selected > this.steps.length) {
+            this.selected = 0;
+        }
+
+        var step = this.steps[this.selected];
         step.active = true;
 
         location.hash = this.selected.toString();
